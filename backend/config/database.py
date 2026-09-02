@@ -16,6 +16,8 @@ db = client["medikiosk"]
 users_collection = db["users"]
 doctors_collection = db["doctors"]
 consultations_collection = db["consultations"]
+reports_collection = db["medical_reports"]
+medical_reports_collection = db["medical_reports"]
 
 
 def connect_to_mongodb():

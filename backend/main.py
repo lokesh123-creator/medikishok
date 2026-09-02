@@ -4,6 +4,7 @@ from routes.consultation import router as consultation_router
 from services.groq import generate_next_question
 from services.sarvam import transcribe_audio, text_to_speech
 
+from routes.reports import router as reports_router
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
@@ -40,6 +41,7 @@ app.add_middleware(
 app.include_router(patient_router)
 app.include_router(doctor_router)
 app.include_router(consultation_router)
+app.include_router(reports_router)
 
 
 # ==================================================
@@ -216,29 +218,17 @@ def interview(
         )
 
         return {
-            "success": True,
-
-            "language": request.language,
-
-            "consultation_type": request.consultation_type,
-
-            "patient_answer": request.answer,
-
-            # Structured clinical information
-            "extracted": result["extracted"],
-
-            # Adaptive question
-            "next_question": result["next_question"],
-
-            # Why this question was selected
-            "reason": result["reason"],
-
-            # Clinical category
-            "category": result["category"],
-
-            # Red flag screening
-            "red_flag": result["red_flag"],
-        }
+              "success": True,
+              "language": request.language,
+             "consultation_type": request.consultation_type,
+             "patient_answer": request.answer,
+             "extracted": result["extracted"],
+             "next_question": result["next_question"],
+             "reason": result["reason"],
+             "category": result["category"],
+             "red_flag": result["red_flag"],
+             "completed": result.get("completed", False),
+       }
 
     except Exception as e:
 
