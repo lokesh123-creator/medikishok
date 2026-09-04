@@ -1,9 +1,16 @@
 fastapi
 uvicorn[standard]
 pymongo
+dnspython
 python-dotenv
 pydantic
+pydantic-settings
 python-multipart
 requests
 httpx
 groq
+sarvamai
+Pillow
+PyMuPDF
+pytesseract
+python-dateutil
