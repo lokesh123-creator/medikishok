@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://medikishok-server.onrender.com";
+const API_BASE_URL = "https://dynamic-encouragement-production-e4c0.up.railway.app";
 
 
 // =========================================================
